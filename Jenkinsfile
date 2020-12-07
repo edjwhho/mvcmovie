@@ -22,9 +22,23 @@ pipeline {
             steps {
                 echo 'Archive build output....'
                 // Archive the build output artifacts.
-                archiveArtifacts artifacts: 'output/*.txt', excludes: 'output/*.md'
+                archiveArtifacts artifacts: 'output/*.txt', excludes: 'output/*.md', fingerprint: true
             }
         }
+        stage('Build Other pipeline') {
+            steps {
+                script {
+                    def built = build(
+                        job:'testing-PR',
+                    )
+                    copyArtifacts(
+                        projectName: 'testing-PR',
+                        selector: specific("${built.number}"),
+                        target: "${env.WORKSPACE}/dist",
+                        filter: "output/*"
+                    )
+                }
+            }
   
     }
 }
