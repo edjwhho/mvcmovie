@@ -1,5 +1,5 @@
 def buildNumber = "Jenkins.instance.getItem('testing-PR').​lastSuccessfulBuild.number"
-def proj = "testing-PR"
+def JOB_NAME = "testing-PR"
 
 pipeline {
     agent any
@@ -25,7 +25,12 @@ pipeline {
 
         stage('pull artifact') {
             steps {
-                copyArtifacts filter: 'test.zip', fingerprintArtifacts: true, projectName: '${proj}', selector: specific('${buildNumber}')
+                copyArtifacts(
+                    filter: 'test.zip',
+                    projectName: env.JOB_NAME,
+                    fingerprintArtifacts: true,
+                    selector: specific(env.BUILD_NUMBER)
+                )
                 sh 'unzip test.zip'
                 sh 'cat archive/test.txt' 
             }
@@ -33,3 +38,4 @@ pipeline {
 
     }
 }
+selector: [$class: 'SpecificBuildSelector', buildNumber: env.BUILD_NUMBER]
