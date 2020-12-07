@@ -28,7 +28,7 @@ pipeline {
             }
         }
 
-        stage('Unstashking') {
+        stage('Unstashing') {
             steps {
                unstash 'usefulfile.txt'
                sh "ls -l"
@@ -39,7 +39,7 @@ pipeline {
             steps {
                 sh 'mkdir archive'
                 sh 'echo test > archive/test.txt'
-                zip zipFile: 'test.zip', archive: false, dir: 'archive'
+                bat "zip zipFile: 'test.zip', archive: false, dir: 'archive'"
                 archiveArtifacts artifacts: 'test.zip', fingerprint: true
             }
         }
