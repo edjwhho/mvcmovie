@@ -32,7 +32,7 @@ pipeline {
             steps {
                unstash 'usefulfile.txt'
                sh "ls -l"
-               sh "cat output/unstash 'usefulfile.txt'"
+               sh "cat output/usefulfile.txt"
             }
 
         }
