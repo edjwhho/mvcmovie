@@ -31,8 +31,8 @@ pipeline {
         stage('Unstashking') {
             steps {
                unstash 'usefulfile.txt'
-               ls -l
-               cat output/unstash 'usefulfile.txt'
+               sh "ls -l"
+               sh "cat output/unstash 'usefulfile.txt'"
             }
 
         }
