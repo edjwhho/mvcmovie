@@ -25,7 +25,7 @@ pipeline {
 
         stage('pull artifact') {
             steps {
-                copyArtifacts filter: 'test.zip', fingerprintArtifacts: true, projectName: 'testing-PR', selector: specific('Jenkins.instance.getItem('testing-PR').​lastSuccessfulBuild.numbe')
+                copyArtifacts filter: 'test.zip', fingerprintArtifacts: true, projectName: 'testing-PR', selector: specific('Jenkins.instance.getItem('testing-PR').​lastSuccessfulBuild.number')
                 sh 'unzip test.zip'
                 sh 'cat archive/test.txt' 
             }
