@@ -2,14 +2,14 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Making dir') {
             steps {
                 echo 'Creating..'
                // Make the output directory.
                 sh "mkdir -p output"
             }
         }
-        stage('Test') {
+        stage('Writing files') {
             steps {
                 echo 'Write..'
                 // Write an useful file, which is needed to be archived.
@@ -18,7 +18,7 @@ pipeline {
                 writeFile file: "output/uselessfile.md", text: "This file is useless, no need to hive it."
             }
         }
-        stage('Deploy') {
+        stage('Creating artifact') {
             steps {
                 echo 'Archive build output....'
                 // Archive the build output artifacts.
