@@ -34,10 +34,11 @@ pipeline {
                     copyArtifacts(
                         projectName: 'testing-PR',
                         selector: specific("${built.number}"),
-                        target: "${env.WORKSPACE}/dist",
+                        target: "${env.WORKSPACE}/",
                         filter: "output/*"
                     )
                 }
+                sh "pwd && tree"
             }
 
         }
