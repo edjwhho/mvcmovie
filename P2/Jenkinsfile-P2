@@ -20,6 +20,7 @@ pipeline {
                 sh "cd P2 && ls -l"
                 sh "pwd"
                 sh "cd .. && pwd"
+                sh "echo $buildNumber $PROJNAME"
                 }
         }
 
