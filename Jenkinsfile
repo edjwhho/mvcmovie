@@ -38,8 +38,8 @@ pipeline {
         stage ('push artifact') {
             steps {
                 sh 'mkdir archive'
-                sh 'echo test > archive/test.txt'
-                bat "zip zipFile: 'test.zip', archive: false, dir: 'archive'"
+                sh 'echo testing zipping and archiving files > archive/test.txt'
+                sh 'zip -r test.zip archive'
                 archiveArtifacts artifacts: 'test.zip', fingerprint: true
             }
         }
