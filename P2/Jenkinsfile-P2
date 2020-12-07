@@ -7,6 +7,9 @@ pipeline {
                 echo 'Creating..'
                // Make the output directory.
                 sh "mkdir -p output"
+                sh "pwd"
+                sh "tree"
+                sh "cd .. && pwd"
                 }
             }
         }
