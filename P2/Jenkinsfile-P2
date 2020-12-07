@@ -1,5 +1,5 @@
 def buildNumber = "Jenkins.instance.getItem('testing-PR').​lastSuccessfulBuild.number"
-def JOB_NAME = "testing-PR"
+def JOBNAME = "testing-PR"
 
 pipeline {
     agent any
@@ -27,7 +27,7 @@ pipeline {
             steps {
                 copyArtifacts(
                     filter: 'test.zip',
-                    projectName: env.JOB_NAME,
+                    projectName: env.JOBNAME,
                     fingerprintArtifacts: true,
                     selector: specific(env.BUILD_NUMBER)
                 )
