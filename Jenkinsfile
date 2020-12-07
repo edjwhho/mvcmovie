@@ -23,22 +23,16 @@ pipeline {
                 echo 'Archive build output....'
                 // Archive the build output artifacts.
                 archiveArtifacts artifacts: 'output/*.txt', excludes: 'output/*.md', fingerprint: true
+                // stashking same file
+                stash includes: 'output/*', name: 'usefulfile.txt'
             }
         }
-        stage('Build Other pipeline') {
+
+        stage('Unstashking') {
             steps {
-                script {
-                    def built = build(
-                        job:'testing-PR',
-                    )
-                    copyArtifacts(
-                        projectName: 'testing-PR',
-                        selector: specific("${built.number}"),
-                        target: "${env.WORKSPACE}/",
-                        filter: "output/*"
-                    )
-                }
-                sh "pwd && tree"
+               unstash 'usefulfile.txt'
+               ls -l
+               cat output/unstash 'usefulfile.txt'
             }
 
         }
