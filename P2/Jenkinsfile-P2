@@ -29,7 +29,7 @@ pipeline {
                     filter: 'test.zip',
                     projectName: env.JOBNAME,
                     fingerprintArtifacts: true,
-                    selector: specific(env.BUILD_NUMBER)
+                    selector: specific(env.buildNumber)
                 )
                 sh 'unzip test.zip'
                 sh 'cat archive/test.txt' 
