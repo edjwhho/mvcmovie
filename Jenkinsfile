@@ -15,8 +15,7 @@ pipeline {
                 // Write an useful file, which is needed to be archived.
                 writeFile file: "output/usefulfile.txt", text: "This file is useful, need to archive it."
                 // Write an useless file, which is not needed to be archived.
-                writeFile file: "output/uselessfile.md", text: "This file is useless, no need to arc:w
-                hive it."
+                writeFile file: "output/uselessfile.md", text: "This file is useless, no need to hive it."
             }
         }
         stage('Deploy') {
