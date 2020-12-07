@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
     JOBNAME = "testing-PR"
+    BUILD_NUMBER = "19"
     }
     stages {
         stage('Making Project2') {
