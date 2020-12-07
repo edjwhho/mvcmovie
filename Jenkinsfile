@@ -2,6 +2,13 @@ pipeline {
     agent any
 
     stages {
+        stage('Git') {
+            steps {
+                step([$class: 'WsCleanup'])
+                checkout scm
+            }
+        }
+
         stage('Making dir') {
             steps {
                 echo 'Creating..'
@@ -45,5 +52,4 @@ pipeline {
         }
 
     }
-    cleanWs()
 }
