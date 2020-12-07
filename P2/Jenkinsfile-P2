@@ -27,9 +27,9 @@ pipeline {
             steps {
                 copyArtifacts(
                     filter: 'test.zip',
-                    projectName: env.PROJNAME,
+                    projectName: 'testing-PR',
                     fingerprintArtifacts: true,
-                    selector: specific(env.buildNumber)
+                    selector: specific('19')
                 )
                 sh 'unzip test.zip'
                 sh 'cat archive/test.txt' 
