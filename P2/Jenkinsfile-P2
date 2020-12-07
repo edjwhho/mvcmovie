@@ -5,6 +5,13 @@ pipeline {
     BUILD_NUMBER = "19"
     }
     stages {
+        stage('Git') {
+            steps {
+                step([$class: 'WsCleanup'])
+                checkout scm
+            }
+        }
+
         stage('Making Project2') {
             steps {
                 echo 'Creating..'
