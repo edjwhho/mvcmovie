@@ -1,6 +1,6 @@
 def buildNumber = "Jenkins.instance.getItem('testing-PR').​lastSuccessfulBuild.number"
 def PROJNAME = "testing-PR"
-def buildName = Jenkins.instance.getItem('testing-PR')
+def buildName = "Jenkins.instance.getItem('testing-PR')"
 
 
 pipeline {
