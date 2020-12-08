@@ -1,5 +1,10 @@
 def buildNumber = "Jenkins.instance.getItem('testing-PR').​lastSuccessfulBuild.number"
 def PROJNAME = "testing-PR"
+def buildName = Jenkins.instance.getItemByFullName('testing-PR')
+echo "Last success: ${buildName.getLastSuccessfulBuild()}"
+echo "All builds: ${buildName.getBuilds().collect{ it.getNumber()}}"
+echo "Last build: ${buildName.getLastBuild()}"
+echo "Is building: ${job.isBuilding()}"
 
 pipeline {
     agent any
@@ -23,8 +28,6 @@ pipeline {
                 sh "echo ${buildNumber} ${PROJNAME}"
                 sh "printenv"
             }
-        }
-                }
         }
 
         stage('pull artifact') {
