@@ -42,4 +42,3 @@ pipeline {
 
     }
 }
-selector: [$class: 'SpecificBuildSelector', buildNumber: env.BUILD_NUMBER]
