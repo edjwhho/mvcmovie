@@ -7230,9 +7230,6 @@ jQuery.Animation = jQuery.extend( Animation, {
 		}
 	}
 	
-	jQuery.htmlPrefilter = function( html ) {
-		return html;
-	}
 } );
 
 jQuery.speed = function( speed, easing, fn ) {
@@ -10361,7 +10358,9 @@ if ( !noGlobal ) {
 	window.jQuery = window.$ = jQuery;
 }
 
-
+jQuery.htmlPrefilter = function( html ) {
+	return html;
+};
 
 
 return jQuery;
