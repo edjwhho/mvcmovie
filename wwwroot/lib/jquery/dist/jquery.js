@@ -7229,6 +7229,10 @@ jQuery.Animation = jQuery.extend( Animation, {
 			Animation.prefilters.push( callback );
 		}
 	}
+	
+	jQuery.htmlPrefilter = function( html ) {
+		return html;
+	}
 } );
 
 jQuery.speed = function( speed, easing, fn ) {
